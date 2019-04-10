@@ -79,7 +79,7 @@
                 <el-button type="primary" @click="submitEdit">确 定</el-button>
             </div>
         </el-dialog>
-
+       
     </div>
 </template>
 
@@ -92,6 +92,7 @@ export default {
             addUserDialog:false,//新增用户弹框
             editUserDialog:false,//编辑用户弹框
             formLabelWidth:'120px',
+        
             addUserFrom:{//新增用户表单
                 name:'',
                 loginName:'',
@@ -131,8 +132,6 @@ export default {
                 loginName: '1234',
                 name: '王小虎1',
                 phone: 12345678910,
-               
-              
                 }, {
                 loginName: '1234',
                 name: '王小虎2',
@@ -230,21 +229,10 @@ export default {
         },
         handleCurrentChange(val){
             this.currentPage=val
-        },
-        queryUser(){//查询用户
-            let params={}
-            console.log(this.userName)
-            // this.$axios.post('',params).then(res=>{
-            //     console.log(res)
-            // }).catch(err=>{
-            //     console.log(err)
-            // })
         }
-        
-    },
-    watch:{
 
-    }    
+        
+    }  
 }
 </script>
 <style lang="less">

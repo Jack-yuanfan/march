@@ -15,7 +15,41 @@ export default {
   data () {
     return {
       userName:"admin",
-      password:'123456'
+      password:'123456',
+      extendsRoutes: [{
+      path: '/',
+      component: resolve => require(['@/components/home'], resolve),//懒加载
+      children:[
+        {
+          path:"/user",
+          name:'user',
+          component:resolve=>require(['@/components/user/user'], resolve),
+          meta:{
+            text:"用户管理",
+            icon:"el-icon-setting"
+          }
+        },
+        {
+          path:"/order",
+          name:'order',
+          component:resolve=>require(['@/components/order/order'], resolve),
+           meta:{
+            text:"订单管理",
+            icon:"el-icon-document"
+          }
+        },
+        {
+          path:"/menu",
+          name:'menu',
+          component:resolve=>require(['@/components/menu/menu'], resolve),
+          meta:{
+            text:"菜单管理",
+            icon:"el-icon-menu"
+          }
+        }
+        
+      ]
+    }]
     }
   },
   created(){
@@ -24,6 +58,9 @@ export default {
   methods:{
     login(){
       console.log(this.userName,this.password)
+      this.$router.addRoutes(this.extendsRoutes);
+      sessionStorage.setItem('userRouter',JSON.stringify(this.extendsRoutes))
+      console.log(this.$router)
       this.$router.push({name:"user"})
       let params={
         username:this.userName,
