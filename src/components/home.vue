@@ -143,7 +143,7 @@ export default {
     },
     created(){
         let userRouter=JSON.parse(sessionStorage.getItem('userRouter'));
-        console.log(userRouter)
+        // console.log(userRouter)
         this.menus=this.handleRouter(userRouter[0].children)
     },
     methods:{

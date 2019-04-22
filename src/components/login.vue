@@ -58,16 +58,17 @@ export default {
   methods:{
     login(){
       console.log(this.userName,this.password)
-      this.$router.addRoutes(this.extendsRoutes);
-      sessionStorage.setItem('userRouter',JSON.stringify(this.extendsRoutes))
+      // this.$router.addRoutes(this.extendsRoutes);
+      // sessionStorage.setItem('userRouter',JSON.stringify(this.extendsRoutes))
       console.log(this.$router)
-      this.$router.push({name:"user"})
+   
       let params={
         username:this.userName,
         password:this.password
       }
       this.$axios.post('/ajaxLogin',params).then(res=>{
         console.log(res)
+        this.$router.push({name:"user"})
       }).catch(err=>{
         console.log(err)
       })
